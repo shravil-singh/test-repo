@@ -1,3 +1,3 @@
 # test-repo
-Starting a new Test repo
+Starting a new Test repo\n
 This new rep contains competitive programming templates for my own personal use and as an intro to git / github for version control.

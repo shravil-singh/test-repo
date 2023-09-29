@@ -4,11 +4,8 @@ class Solution:
             return 0
         lps = [0] * len(needle)
         prevLPS, i = 0, 1
-        # prevLPSlist = []
-        # iList = []
+        ans = []
         while i < len(needle):
-            # prevLPSlist.append(prevLPS)
-            # iList.append(i)
             if needle[i] == needle[prevLPS]:
                 lps[i] = prevLPS + 1
                 prevLPS += 1
@@ -18,13 +15,8 @@ class Solution:
                 i += 1
             else:
                 prevLPS = lps[prevLPS - 1]
-
-        # print("prevLPSList : ", prevLPSlist)
-        # print("iList :       ", iList)
-
         i = 0
         j = 0
-        # print("LPSList :     ", lps("AABAACAABAAA"))
         while (i < len(haystack)):
             if (haystack[i] == needle[j]):
                 i, j = i + 1, j + 1
@@ -35,9 +27,14 @@ class Solution:
                     j = lps[j - 1]
 
             if j == len(needle):
-                return i - j
+                ans.append(i - j)
+                j = lps[j - 1]
 
-        return -1
-
-s = Solution()
-print(s.strStr("AABAACAABAAA", "BAAA"))
+        return ans
+# s = Solution()
+# text = "ABABABABAAABABAABABBABAAABABABABBABABABABBABABABABABABABABABABABABAAAAABABABBBBABBABABABA"
+# pat = "ABA"
+# b = s.strStr(text, pat)
+# print(b)
+# for num in b:
+#     print(text[num : len(pat) + num], end = " ")
